@@ -1,0 +1,20 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "RAGJur - Jurimetria Brasileira",
+  "name_for_model": "ragjur",
+  "description_for_human": "Busca jurisprudencial e jurimetria preditiva em 67M+ decisões de 55 tribunais brasileiros.",
+  "description_for_model": "Search and analyze 67 million Brazilian court decisions across 55 courts. Use this tool for: legal research (buscar_jurisprudencia), predicting case outcomes (predicao_resultado), analyzing judge behavior (perfil_relator, estrategia_juiz), finding similar precedents (similaridade), detecting divergence between court chambers (divergencia_turmas), tracking jurisprudential evolution (evolucao_jurisprudencial), generating legal documents grounded in real case law (gerar_peca), and verifying legal citations for accuracy (verificar_citacao).",
+  "auth": {
+    "type": "service_http",
+    "authorization_type": "custom",
+    "custom_auth_header": "x-api-key",
+    "verification_tokens": {}
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://ragjur-mcp-662926580906.southamerica-east1.run.app/openapi.json"
+  },
+  "logo_url": "https://ragjur.com.br/logo-512.png",
+  "contact_email": "suporte@ragjur.com.br",
+  "legal_info_url": "https://ragjur.com.br/termos"
+}

@@ -1,0 +1,30 @@
+edition: 3.0.0
+name: ragjur
+access: default
+resources:
+  ragjur-mcp:
+    component: fc3
+    props:
+      region: us-east-1
+      functionName: ragjur-mcp
+      description: RAGJur MCP Server
+      runtime: custom
+      handler: index.handler
+      code: ./deploy
+      cpu: 0.35
+      memorySize: 512
+      diskSize: 512
+      timeout: 120
+      instanceTimeout: 30
+      caPort: 9000
+      environmentVariables:
+        NODE_ENV: production
+        RAGJUR_API_URL: https://ragjur-api-lqxxpfhrtx.us-east-1.fcapp.run
+        TRANSPORT: http
+        RAGJUR_API_KEY: ${env:RAGJUR_API_KEY}
+      triggers:
+        - triggerName: http
+          triggerType: http
+          triggerConfig:
+            authType: anonymous
+            methods: [GET, POST, PUT, DELETE, HEAD, OPTIONS]

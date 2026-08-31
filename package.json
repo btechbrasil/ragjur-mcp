@@ -1,0 +1,44 @@
+{
+  "name": "ragjur-mcp",
+  "version": "2.1.0",
+  "description": "RAGJur MCP Server — Jurimetria e busca jurisprudencial com IA para 67M+ decisões brasileiras. Compatível com Claude, GPT/Copilot, e Vertex AI.",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "ragjur-mcp": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "tsx watch src/index.ts",
+    "dev:stdio": "TRANSPORT=stdio tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx src/test-health.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "express": "^5.1.0",
+    "zod": "^3.25.0",
+    "zod-to-json-schema": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": ["mcp", "legal", "jurimetrics", "brazil", "ai", "rag"],
+  "license": "LicenseRef-Proprietary",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beanstechhub/ragjur-mcp.git"
+  },
+  "files": [
+    "build",
+    "README.md",
+    "mcp.json"
+  ],
+}
