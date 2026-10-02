@@ -1,0 +1,33 @@
+{
+  "name": "ragjur",
+  "version": "1.0.0",
+  "description": "RAGJur — Brazil's largest legal RAG platform. Search 112M+ court decisions from 90+ Brazilian courts (STF, STJ, TRFs, state courts, labor, electoral, audit courts and tax appeal tribunals) with legal synonym expansion, jurisprudence analytics (jurimetria) and citation verification.",
+  "author": {
+    "name": "Beans Tech",
+    "url": "https://ragjur.ai"
+  },
+  "homepage": "https://ragjur.ai",
+  "repository": "https://github.com/btechbrasil/ragjur-mcp",
+  "license": "MIT",
+  "keywords": [
+    "legal",
+    "law",
+    "brazil",
+    "jurisprudencia",
+    "jurimetria",
+    "research",
+    "search",
+    "rag",
+    "courts",
+    "portuguese"
+  ],
+  "mcpServers": {
+    "ragjur": {
+      "type": "http",
+      "url": "https://mcp.ragjur.ai/mcp",
+      "headers": {
+        "x-api-key": "${RAGJUR_API_KEY}"
+      }
+    }
+  }
+}
