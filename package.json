@@ -1,7 +1,7 @@
 {
   "name": "ragjur-mcp",
   "version": "2.1.0",
-  "description": "RAGJur MCP Server — Jurimetria e busca jurisprudencial com IA para 67M+ decisões brasileiras. Compatível com Claude, GPT/Copilot, e Vertex AI.",
+  "description": "RAGJur MCP Server — Jurimetria e busca jurisprudencial com IA para 112M+ decisões brasileiras. Compatível com Claude, GPT/Copilot, e Vertex AI.",
   "type": "module",
   "main": "build/index.js",
   "bin": {
@@ -34,11 +34,11 @@
   "license": "LicenseRef-Proprietary",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beanstechhub/ragjur-mcp.git"
+    "url": "git+https://github.com/btechbrasil/ragjur-mcp.git"
   },
   "files": [
     "build",
     "README.md",
-    "mcp.json"
-  ],
+    ".mcp.json"
+  ]
 }
