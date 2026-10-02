@@ -21,12 +21,22 @@
     "courts",
     "portuguese"
   ],
+  "privacyPolicyUrl": "https://ragjur.ai/privacidade",
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "RAGJur API Key",
+      "description": "Sua chave de API do RAGJur (incluída nas assinaturas do ragjur.ai).",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "mcpServers": {
     "ragjur": {
       "type": "http",
       "url": "https://mcp.ragjur.ai/mcp",
       "headers": {
-        "x-api-key": "${RAGJUR_API_KEY}"
+        "x-api-key": "${user_config.api_key}"
       }
     }
   }
