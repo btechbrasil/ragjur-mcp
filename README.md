@@ -1,6 +1,6 @@
 # RAGJur MCP Server
 
-Servidor MCP (Model Context Protocol) para busca jurisprudencial e jurimetria em **67M+ decisões** de 55 tribunais brasileiros.
+Servidor MCP (Model Context Protocol) para busca jurisprudencial e jurimetria em **112M+ decisões** de 90+ tribunais brasileiros.
 
 ## Compatibilidade
 
