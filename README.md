@@ -2,6 +2,15 @@
 
 Servidor MCP (Model Context Protocol) para busca jurisprudencial e jurimetria em **112M+ decisões** de 90+ tribunais brasileiros.
 
+## Instalar como plugin do Claude
+
+```
+/plugin marketplace add btechbrasil/ragjur-mcp
+/plugin install ragjur@btechbrasil
+```
+
+Na instalação o Claude pede sua **RAGJur API Key** (config sensível, jamais lida da sua máquina sem perguntar). Assinaturas e chaves: [ragjur.ai](https://ragjur.ai).
+
 ## Compatibilidade
 
 | Plataforma | Transporte | Status |
