@@ -1,144 +1,67 @@
-# RAGJur MCP Server
+# RAGJur — Claude Plugin
 
-Servidor MCP (Model Context Protocol) para busca jurisprudencial e jurimetria em **112M+ decisões** de 90+ tribunais brasileiros.
+**Brazilian legal RAG for Claude — search 112M+ court decisions from 90+ Brazilian tribunals.**
 
-## Instalar como plugin do Claude
+This repository contains the **Claude plugin manifest** for RAGJur. The plugin connects Claude to the RAGJur MCP server (remote, streamable HTTP) at `https://mcp.ragjur.ai/mcp`.
+
+## Install
+
+In Claude Code:
 
 ```
 /plugin marketplace add btechbrasil/ragjur-mcp
 /plugin install ragjur@btechbrasil
 ```
 
-Na instalação o Claude pede sua **RAGJur API Key** (config sensível, jamais lida da sua máquina sem perguntar). Assinaturas e chaves: [ragjur.ai](https://ragjur.ai).
+During installation, Claude asks for your **RAGJur API Key** (stored as a sensitive user config — it is never read from your machine without asking). API keys are included with RAGJur subscriptions: [ragjur.ai](https://ragjur.ai).
 
-## Compatibilidade
+## What you get — 14 tools
 
-| Plataforma | Transporte | Status |
-|------------|-----------|--------|
-| Claude Desktop / Claude Code | stdio | Suportado |
-| Claude (cloud) | Streamable HTTP | Suportado |
-| GPT Actions (ChatGPT) | OpenAPI REST | Suportado |
-| Microsoft Copilot | OpenAPI REST | Suportado |
-| Google Vertex AI Extensions | OpenAPI REST | Suportado |
-| Any MCP Client | Streamable HTTP | Suportado |
+| Tool | What it does |
+|---|---|
+| `buscar_jurisprudencia` | Full-text search over 112M+ decisions (BM25, filters by tribunal/class/date) |
+| `similaridade` | Semantic search — decisions similar to a case or ementa (embeddings) |
+| `panorama_tema` | Topic overview: outcome rate, result categories, trend |
+| `divergencia_turmas` | Divergence between panels/chambers on a topic |
+| `evolucao_jurisprudencial` | How a thesis evolved over time (quarterly) |
+| `predicao_resultado` | Statistical outcome prediction with confidence interval |
+| `tempo_tramitacao` | Litigation-time statistics (median, percentiles) |
+| `perfil_relator` | Judge/rapporteur profile on a topic |
+| `dna_turma` | Statistically characteristic terms of a panel |
+| `clusters_tematicos` | Cluster a topic into sub-issues |
+| `estrategia_juiz` | Full strategic analysis of a judge for a topic |
+| `verificar_citacao` | Anti-hallucination citation verification |
+| `chat_juridico` | Q&A grounded on retrieved decisions |
+| `gerar_peca` | Draft a procedural document grounded on real precedents |
 
-## Quick Start
+### Coverage
 
-### Local (Claude Desktop / Claude Code)
+STF, STJ, TST, TSE, TCU, all TRFs (1–6), all state courts (TJs), labor courts (TRTs), electoral courts, state audit courts (TCEs) and administrative tax appeal tribunals (CARF/DRJs/TARFs) — 112 million+ decisions and growing daily.
 
-```bash
-cd tools/ragjur-mcp
-npm install
-npm run build
+### Example prompts
 
-# Testar
-RAGJUR_API_KEY=rj_... npm test
-```
+- "Busque os acórdãos mais recentes do STJ sobre busca e apreensão em alienação fiduciária"
+- "Qual a taxa de provimento de recursos sobre dano moral no TJSP? Há divergência entre as câmaras?"
+- "Verifique se as citações desta peça existem"
+- "Redija uma contestação sobre despejo por falta de pagamento, lado réu, TJMG"
 
-Adicione ao `claude_desktop_config.json` (ajuste o caminho para a sua máquina —
-exemplo com caminho relativo ao repositório):
+## How it works
 
-```json
-{
-  "mcpServers": {
-    "ragjur": {
-      "command": "node",
-      "args": ["/caminho/para/1.RagJUR/tools/ragjur-mcp/build/index.js"],
-      "env": {
-        "TRANSPORT": "stdio",
-        "RAGJUR_API_KEY": "rj_..."
-      }
-    }
-  }
-}
-```
+The plugin registers one remote MCP server (HTTP transport). Your queries are sent to `mcp.ragjur.ai`, which searches the Elasticsearch corpus and returns grounded results. The server is **stateless** — no conversation or query data is persisted after the session ends.
 
-> **Remote (Claude Code / clientes HTTP)**: use o `mcp.json` deste diretório —
-> endpoint `https://ragjur-mcp-662926580906.southamerica-east1.run.app/mcp`
-> com header `x-api-key`. O `/mcp` exige autenticação (x-api-key ou Bearer).
+## Privacy & data
 
-### Cloud Run (HTTP)
+- Stateless MCP server (30-minute session TTL, nothing stored)
+- Data processed in Brazil (Alibaba Cloud São Paulo region)
+- LGPD-compliant: [ragjur.ai/lgpd](https://ragjur.ai/lgpd)
+- Privacy policy: [ragjur.ai/privacidade](https://ragjur.ai/privacidade)
 
-```bash
-gcloud builds submit --config=cloudbuild.yaml --project=beanstech
-```
+## Support
 
-### GPT Actions / Copilot
+- Site: [ragjur.ai](https://ragjur.ai)
+- API docs: [api.ragjur.ai](https://api.ragjur.ai/api/v1/openapi.json)
+- Contact: contato@ragjur.com.br
 
-Use a spec em `/openapi.json`:
-```
-https://ragjur-mcp-662926580906.southamerica-east1.run.app/openapi.json
-```
+## License
 
-## Tools Disponíveis (14)
-
-| Tool | Descrição |
-|------|-----------|
-| `buscar_jurisprudencia` | Busca BM25 em 67M+ julgados com filtros |
-| `panorama_tema` | Visão panorâmica: taxa de provimento, categorias |
-| `divergencia_turmas` | Divergência entre turmas sobre um tema |
-| `evolucao_jurisprudencial` | Evolução temporal (trimestral) |
-| `predicao_resultado` | Predição multi-fator do resultado |
-| `perfil_relator` | Perfil estatístico de juiz/relator |
-| `dna_turma` | Termos significativos de uma turma |
-| `clusters_tematicos` | Agrupamento por embeddings |
-| `estrategia_juiz` | Análise estratégica completa |
-| `verificar_citacao` | Anti-alucinação: verifica citações |
-| `gerar_peca` | Gera peças processuais |
-| `similaridade` | Busca vetorial por similaridade |
-| `chat_juridico` | Chat grounded em jurisprudência |
-| `tempo_tramitacao` | Estatísticas de tempo processual |
-
-## Endpoints
-
-| Rota | Método | Descrição |
-|------|--------|-----------|
-| `/` | GET | Info do servidor |
-| `/mcp` | POST/GET/DELETE | MCP Streamable HTTP |
-| `/health` | GET | Health check completo |
-| `/api/tools` | GET | Lista de tools |
-| `/api/tools/:name` | POST | Executa tool (REST) |
-| `/openapi.json` | GET | OpenAPI 3.1 spec |
-
-## Health Check
-
-```bash
-curl https://ragjur-mcp-662926580906.southamerica-east1.run.app/health
-```
-
-Retorna:
-```json
-{
-  "status": "healthy",
-  "version": "2.0.0",
-  "checks": {
-    "api": true,
-    "elasticsearch": true,
-    "doc_count": 67110561,
-    "api_latency_ms": 650
-  },
-  "tools": { "count": 14, "available": [...] }
-}
-```
-
-## Variáveis de Ambiente
-
-| Variável | Obrigatória | Descrição |
-|----------|-------------|-----------|
-| `RAGJUR_API_KEY` | Sim | API key do RAGJur |
-| `TRANSPORT` | Não | `streamable-http` (default) ou `stdio` |
-| `PORT` | Não | Porta HTTP (default: 8080) |
-| `RAGJUR_API_URL` | Não | URL base da API (default: produção) |
-
----
-
-## 🏪 Publicação em Marketplaces
-
-| Canal | Status | Como |
-|---|---|---|
-| **MCP Registry** (registry.modelcontextprotocol.io) | Pronto — `server.json` incluído | `mcp-publisher login github && mcp-publisher publish` |
-| **Claude Connectors Directory** | Pendente | Requer org Team/Enterprise na Anthropic + submissão em claude.ai/admin-settings/directory/submissions/new |
-| **GPT Store** | Config pronto — `gpt-store-config.json` | platform.openai.com/gpts → import actions via `openapi.json` |
-| **npm** | Pronto — `package.json` publicável | `npm publish` (requer token) |
-
-**Auth:** header `x-api-key` com chave RAGJur (planos: ragjur.com.br/precos).
+MIT (this repository — plugin manifest and documentation). The RAGJur service is a commercial product of Beans Tech.
