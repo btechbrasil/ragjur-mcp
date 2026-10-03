@@ -9,7 +9,7 @@
     {
       "name": "ragjur",
       "description": "Brazilian legal RAG: search 112M+ court decisions from 90+ tribunals with legal synonym expansion, jurimetria analytics and citation verification. Tools for jurisprudence search, court statistics, outcome prediction, judge profiles and legal drafting.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "source": "./",
       "author": {
         "name": "Beans Tech",
