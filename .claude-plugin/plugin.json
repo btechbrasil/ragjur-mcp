@@ -1,6 +1,6 @@
 {
   "name": "ragjur",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "RAGJur — Brazil's largest legal RAG platform. Search 112M+ court decisions from 90+ Brazilian courts (STF, STJ, TRFs, state courts, labor, electoral, audit courts and tax appeal tribunals) with legal synonym expansion, jurisprudence analytics (jurimetria) and citation verification.",
   "author": {
     "name": "Beans Tech",
@@ -22,6 +22,8 @@
     "portuguese"
   ],
   "privacyPolicyUrl": "https://ragjur.ai/privacidade",
+  "termsOfServiceUrl": "https://ragjur.ai/termos",
+  "supportUrl": "https://ragjur.ai/suporte",
   "userConfig": {
     "api_key": {
       "type": "string",
