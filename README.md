@@ -2,6 +2,8 @@
 
 **Brazilian legal RAG for Claude — search 112M+ court decisions from 90+ Brazilian tribunals.**
 
+> 💳 **Paid subscription required** (from R$ 297/month — see [ragjur.ai/precos](https://ragjur.ai/precos)). Installation is free; using the tools requires an API key that comes with a RAGJur subscription.
+
 This repository contains the **Claude plugin manifest** for RAGJur. The plugin connects Claude to the RAGJur MCP server (remote, streamable HTTP) at `https://mcp.ragjur.ai/mcp`.
 
 ## Install
