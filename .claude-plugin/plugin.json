@@ -1,6 +1,6 @@
 {
   "name": "ragjur",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "RAGJur — Brazil's largest legal RAG platform (subscription required, from R$ 297/month — plans at ragjur.ai/precos). Search 112M+ court decisions from 90+ Brazilian courts (STF, STJ, TRFs, state courts, labor, electoral, audit courts and tax appeal tribunals) with legal synonym expansion, jurisprudence analytics (jurimetria) and citation verification.",
   "author": {
     "name": "Beans Tech",
@@ -39,7 +39,8 @@
       "url": "https://mcp.ragjur.ai/mcp",
       "headers": {
         "x-api-key": "${user_config.api_key}"
-      }
+      },
+      "timeoutMs": 110000
     }
   }
 }

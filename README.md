@@ -51,6 +51,8 @@ STF, STJ, TST, TSE, TCU, all TRFs (1–6), all state courts (TJs), labor courts 
 
 The plugin registers one remote MCP server (HTTP transport). Your queries are sent to `mcp.ragjur.ai`, which searches the Elasticsearch corpus and returns grounded results. The server is **stateless** — no conversation or query data is persisted after the session ends.
 
+> ⏱️ **Response times**: search and analytics tools answer in seconds. The AI-drafting tools (`chat_juridico`, `gerar_peca`) retrieve real decisions and then generate prose on top — they legitimately take **40–90 s**. The plugin declares a 110 s tool timeout (aligned with the server's own cap) so hosts whose default tool timeout is 30 s don't abort these calls mid-flight.
+
 ## Privacy & data
 
 - Stateless MCP server (30-minute session TTL, nothing stored)
