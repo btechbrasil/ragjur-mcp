@@ -2,7 +2,7 @@
 
 **Brazilian legal RAG for Claude — search 112M+ court decisions from 90+ Brazilian tribunals.**
 
-> 💳 **Paid subscription required** (from R$ 197/month — see [ragjur.ai/precos](https://ragjur.ai/precos)). Installation is free; using the tools requires an API key that comes with a RAGJur subscription: [ragjur.ai](https://ragjur.ai).
+> 💳 **Paid subscription required** (from R$ 197/month — see [ragjur.ai/precos](https://ragjur.ai/precos)). Installation and authorization are free; using the tools requires a RAGJur subscription: [ragjur.ai](https://ragjur.ai).
 
 This repository contains the **Claude plugin manifest** for RAGJur. The plugin connects Claude to the RAGJur MCP server (remote, streamable HTTP) at `https://mcp.ragjur.ai/mcp`.
 
@@ -15,7 +15,7 @@ In Claude Code:
 /plugin install ragjur@btechbrasil
 ```
 
-During installation, Claude asks for your **RAGJur API Key** (stored as a sensitive user config — it is never read from your machine without asking). API keys are included with RAGJur subscriptions: [ragjur.ai](https://ragjur.ai).
+No API key to paste. On the first tool call, your host (Claude, ZCode/GLM, or any MCP client with OAuth support) receives the server's authorization challenge and opens your **browser for login** (BeansTech ID). Authorize once and the connection reconnects automatically; your plan travels in the token and the tool list adapts (see Plans below).
 
 ## What you get — 12 grounding tools
 
