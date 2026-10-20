@@ -17,7 +17,7 @@ In Claude Code:
 
 During installation, Claude asks for your **RAGJur API Key** (stored as a sensitive user config — it is never read from your machine without asking). API keys are included with RAGJur subscriptions: [ragjur.ai](https://ragjur.ai).
 
-## What you get — 14 tools
+## What you get — 12 grounding tools
 
 | Tool | What it does |
 |---|---|
@@ -33,8 +33,8 @@ During installation, Claude asks for your **RAGJur API Key** (stored as a sensit
 | `clusters_tematicos` | Cluster a topic into sub-issues |
 | `estrategia_juiz` | Full strategic analysis of a judge for a topic |
 | `verificar_citacao` | Anti-hallucination citation verification |
-| `chat_juridico` | Q&A grounded on retrieved decisions |
-| `gerar_peca` | Draft a procedural document grounded on real precedents |
+
+> 🧠 **The prose is yours**: conversational Q&A and document drafting are done by the LLM of the platform you're in (Claude, GLM/ZCode, ChatGPT, Cursor), grounded by these retrieval and jurimetrics tools. The plugin intentionally ships no `chat`/`draft` tool — the synthesis layer is the host model, so answers come from the model you already pay for. (`chat_juridico` and `gerar_peca` remain available on the REST API for direct integrations.)
 
 ### Coverage
 
@@ -51,7 +51,7 @@ STF, STJ, TST, TSE, TCU, all TRFs (1–6), all state courts (TJs), labor courts 
 
 The plugin registers one remote MCP server (HTTP transport). Your queries are sent to `mcp.ragjur.ai`, which searches the Elasticsearch corpus and returns grounded results. The server is **stateless** — no conversation or query data is persisted after the session ends.
 
-> ⏱️ **Response times**: search and analytics tools answer in seconds. The AI-drafting tools (`chat_juridico`, `gerar_peca`) retrieve real decisions and then generate prose on top — they legitimately take **40–90 s**. The plugin declares a 110 s tool timeout (aligned with the server's own cap) so hosts whose default tool timeout is 30 s don't abort these calls mid-flight.
+> ⏱️ **Response times**: search and analytics tools answer in seconds; `similaridade` and `estrategia_juiz` can take up to ~30–60 s on hard queries. The plugin declares a 110 s tool timeout (aligned with the server's own cap) so hosts whose default tool timeout is 30 s don't abort these calls mid-flight.
 
 ## Privacy & data
 
