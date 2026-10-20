@@ -2,7 +2,7 @@
 
 **Brazilian legal RAG for Claude — search 112M+ court decisions from 90+ Brazilian tribunals.**
 
-> 💳 **Paid subscription required** (from R$ 297/month — see [ragjur.ai/precos](https://ragjur.ai/precos)). Installation is free; using the tools requires an API key that comes with a RAGJur subscription.
+> 💳 **Paid subscription required** (from R$ 197/month — see [ragjur.ai/precos](https://ragjur.ai/precos)). Installation is free; using the tools requires an API key that comes with a RAGJur subscription: [ragjur.ai](https://ragjur.ai).
 
 This repository contains the **Claude plugin manifest** for RAGJur. The plugin connects Claude to the RAGJur MCP server (remote, streamable HTTP) at `https://mcp.ragjur.ai/mcp`.
 
@@ -33,6 +33,8 @@ During installation, Claude asks for your **RAGJur API Key** (stored as a sensit
 | `clusters_tematicos` | Cluster a topic into sub-issues |
 | `estrategia_juiz` | Full strategic analysis of a judge for a topic |
 | `verificar_citacao` | Anti-hallucination citation verification |
+
+> 📊 **Plans**: **Essential** (R$ 197/mo, 100 queries) unlocks the core research tools (`buscar_jurisprudencia`, `similaridade`, `verificar_citacao`, `panorama_tema`); **Pro** (500 queries) unlocks all 12. The server filters the tool list to your plan automatically.
 
 > 🧠 **The prose is yours**: conversational Q&A and document drafting are done by the LLM of the platform you're in (Claude, GLM/ZCode, ChatGPT, Cursor), grounded by these retrieval and jurimetrics tools. The plugin intentionally ships no `chat`/`draft` tool — the synthesis layer is the host model, so answers come from the model you already pay for. (`chat_juridico` and `gerar_peca` remain available on the REST API for direct integrations.)
 

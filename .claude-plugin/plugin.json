@@ -1,7 +1,7 @@
 {
   "name": "ragjur",
-  "version": "1.0.4",
-  "description": "RAGJur — Brazil's largest legal RAG platform (subscription required, from R$ 297/month — plans at ragjur.ai/precos). Search 112M+ court decisions from 90+ Brazilian courts (STF, STJ, TRFs, state courts, labor, electoral, audit courts and tax appeal tribunals) with legal synonym expansion, jurisprudence analytics (jurimetria) and citation verification.",
+  "version": "1.0.5",
+  "description": "RAGJur — Brazil's largest legal RAG platform (subscription required, from R$ 197/month — plans at ragjur.ai/precos). Search 112M+ court decisions from 90+ Brazilian courts (STF, STJ, TRFs, state courts, labor, electoral, audit courts and tax appeal tribunals) with legal synonym expansion, jurisprudence analytics (jurimetria) and citation verification.",
   "author": {
     "name": "Beans Tech",
     "url": "https://ragjur.ai"
